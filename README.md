@@ -44,8 +44,7 @@ classes.puml
 -PlantUML code showing class relationships
 
 classes.png
--Image of the UML class diagram
-s
+-Image of the UML class diagrams
 
 
 
