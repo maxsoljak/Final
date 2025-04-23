@@ -1,0 +1,99 @@
+@startuml
+
+class User {
+    - account
+    + authenticate(username, password)
+    + display_menu()
+}
+
+class Account {
+    - username
+    - password
+    + get_username()
+    + check_password()
+}
+
+class Skill {
+    - id
+    - name
+    + __str__()
+}
+
+class SkillSet {
+    - skills
+    + display_skills()
+    + get_skill_by_id()
+}
+
+class Profile {
+    - username
+    - skills
+    - status
+    - accepted_by
+    - contact_info
+    + add_skill()
+    + get_skills()
+    + update_status()
+    + set_acceptance_details()
+    + get_status()
+    + get_acceptance_info()
+    + clear_skills()
+    + __str__()
+}
+
+class MatchResult {
+    - seeker_username
+    - match_count
+    + __str__()
+}
+
+class Validator {
+    + validate_username()
+    + validate_password()
+    + validate_phone()
+}
+
+class Database {
+    - users
+    - job_seekers
+    - employers
+    + add_user()
+    + find_user()
+}
+
+class JobSeeker {
+    - profile
+    + create_profile()
+    + display_menu()
+}
+
+class Employer {
+    - required_profile
+    + define_required_skills()
+    + list_matches()
+    + pick_applicant()
+    + display_menu()
+}
+
+class Menu {
+    - db
+    - skillset
+    + run()
+    + create_user()
+    + login_user()
+}
+
+User <|-- JobSeeker
+User <|-- Employer
+JobSeeker --> Profile
+Employer --> Profile
+User --> Account
+Profile --> Skill
+SkillSet --> Skill
+Menu --> Database
+Menu --> SkillSet
+Database --> JobSeeker
+Database --> Employer
+
+@enduml
+
